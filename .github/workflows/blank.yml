@@ -21,7 +21,7 @@ jobs:
           echo test, and deploy your project.
           echo ${{ secrets.SAMPLE }}
           cat secrets/decrypted/secrets.txt
-          echo $(readlink -f secrets/decrypted/secrets.txt) >> $GITHUB_ENV
+          echo "$(readlink -f secrets/decrypted/secrets.txt)" >> $GITHUB_ENV
 
       - name: Print Env variable
         run: |
