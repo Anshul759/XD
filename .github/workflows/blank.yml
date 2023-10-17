@@ -21,8 +21,8 @@ jobs:
           echo test, and deploy your project.
           echo ${{ secrets.SAMPLE }}
           cat secrets/decrypted/secrets.txt
-          cat $(readlink -f secrets/decrypted/secrets.txt)
+          echo "CERT_PATH = $(readlink -f secrets/decrypted/secrets.txt)" >> $GITHUB_ENV
 
       - name: Print Env variable
         run: |
-          echo "All"
+          echo ${{ env.CERT_PATH }}
