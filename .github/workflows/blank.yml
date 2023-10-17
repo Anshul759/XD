@@ -13,6 +13,7 @@ jobs:
         run: |
           mkdir -p secrets/decrypted/
           echo '${{ secrets.SAMPLE }}' >> secrets/decrypted/secrets.txt
+          echo '${{ secrets.SAMPLE }}' >> secrets/decrypted/secrets2.txt
           echo "File Created"
 
       - name: Run a multi-line script
@@ -21,7 +22,10 @@ jobs:
           echo test, and deploy your project.
           echo ${{ secrets.SAMPLE }}
           cat secrets/decrypted/secrets.txt
-          echo "::add-mask::$(readlink -f secrets/decrypted/secrets.txt)"
+
+          echo "$(readlink -f secrets/decrypted/secrets.txt),$(readlink -f secrets/decrypted/secrets2.txt)"
+          echo "::add-mask::$(readlink -f secrets/decrypted/secrets.txt),::add-mask::$(readlink -f secrets/decrypted/secrets2.txt)"
+          echo "$(readlink -f secrets/decrypted/secrets.txt),$(readlink -f secrets/decrypted/secrets2.txt)"
           echo "CERT_PATH = $(readlink -f secrets/decrypted/secrets.txt)" >> $GITHUB_ENV
 
       - name: Print Env variable
