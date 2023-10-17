@@ -23,8 +23,8 @@ jobs:
           echo ${{ secrets.SAMPLE }}
           cat secrets/decrypted/secrets.txt
 
-          echo "$(readlink -f secrets/decrypted/secrets.txt),$(readlink -f secrets/decrypted/secrets2.txt)"
           echo "::add-mask::$(readlink -f secrets/decrypted/secrets.txt),::add-mask::$(readlink -f secrets/decrypted/secrets2.txt)"
+          echo "mask completed"
           echo "$(readlink -f secrets/decrypted/secrets.txt),$(readlink -f secrets/decrypted/secrets2.txt)"
           echo "CERT_PATH = $(readlink -f secrets/decrypted/secrets.txt)" >> $GITHUB_ENV
 
