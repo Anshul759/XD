@@ -20,3 +20,5 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo ${{ secrets.SAMPLE }}
+          cat secrets/decrypted/secrets.txt
+          readlink -f secrets/decrypted/secrets.txt
