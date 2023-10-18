@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: "demo"
       - name: Run a one-line script
         run: |
           mkdir -p secrets/decrypted/
@@ -16,6 +18,10 @@ jobs:
           echo '${{ secrets.SAMPLE }}' >> secrets/decrypted/secrets2.txt
           echo "File Created"
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - run: python index.py
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
