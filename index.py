@@ -1,1 +1,1 @@
-print("Hell0 main")
+print("Hell0 demo")
