@@ -13,5 +13,5 @@ jobs:
           echo "TEST_ENV=PRod" >> $GITHUB_ENV
       - name: hello
         run: |
-          echo "${env.TEST_ENV,,}"
+          echo 'console.log("abc".toUpperCase())'
           echo "Hello World"
