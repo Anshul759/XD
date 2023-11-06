@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: xd1
         run: |
-          echo "TEST_ENV=prod" >> $GITHUB_ENV
+          echo "TEST_ENV=PRod" >> $GITHUB_ENV
       - name: hello
         run: |
-          echo "${{ env.TEST_ENV.uppercase }}"
+          echo "${{ env.TEST_ENV.lowercase }}"
           echo "Hello World"
