@@ -8,32 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: "demo"
-      - name: Run a one-line script
+      - name: xd1
         run: |
-          mkdir -p secrets/decrypted/
-          echo '${{ secrets.SAMPLE }}' >> secrets/decrypted/secrets.txt
-          echo '${{ secrets.SAMPLE }}' >> secrets/decrypted/secrets2.txt
-          echo "File Created"
-
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10' 
-      - run: python index.py
-      - name: Run a multi-line script
+          echo "TEST_ENV=prod" >> $GITHUB_ENV
+      - name: hello
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          echo ${{ secrets.SAMPLE }}
-          cat secrets/decrypted/secrets.txt
-
-          echo "::add-mask::$(readlink -f secrets/decrypted/secrets.txt)"
-          echo "mask completed"
-          echo "$(readlink -f secrets/decrypted/secrets.txt)"
-          echo "CERT_PATH = $(readlink -f secrets/decrypted/secrets.txt)" >> $GITHUB_ENV
-
-      - name: Print Env variable
-        run: |
-          echo ${{ env.CERT_PATH }}
+          ${{ TEST_ENV.lowercase }}
