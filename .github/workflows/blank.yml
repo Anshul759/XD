@@ -13,4 +13,5 @@ jobs:
           echo "TEST_ENV=prod" >> $GITHUB_ENV
       - name: hello
         run: |
-          echo "${{ env.TEST_ENV }}"
+          echo "${{ env.TEST_ENV.uppercase }}"
+          echo "Hello World"
